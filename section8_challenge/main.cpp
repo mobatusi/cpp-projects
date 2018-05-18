@@ -43,9 +43,6 @@ int main() {
   cin >> cents;
 
   dollars = static_cast<double>(cents) / 100;
-  // cout << dollars << endl;
-  // cout << ((cents - dollars*100)%100) << endl;
-  // if ((cents - dollars*100) % 100 != 0) cout << "you have change" << endl;
   cents = cents - (dollars * 100);
   quarters = (static_cast<double>(cents) / 25);
   cents = cents - (quarters * 25);
