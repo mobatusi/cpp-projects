@@ -44,6 +44,10 @@ int main() {
 char choice;
 vector <int> numbers;
 int num;
+double mean;
+int smallest(0);
+int largest(0);
+int numsum(0);
 
 do {
   cout << "P - Print numbers" << endl;
@@ -52,7 +56,7 @@ do {
   cout << "S - Display the smallest number" << endl;
   cout << "L - Display the largest number" << endl;
   cout << "Q - Quit" << endl;
-
+  cout << ' ' << endl;
   cout << "Enter your choice: ";
   cin >> choice;
 
@@ -63,15 +67,19 @@ do {
           cout << "[] - the list is empty" << endl;
           cout << " " <<endl;
         } else {
-          cout << numbers.size() << endl;
+          for (auto i: numbers)
+            cout << i << endl;
         }
+        break;
       case 'p':
         if (numbers.size() == 0) {
           cout << "[] - the list is empty" << endl;
           cout << " " <<endl;
         } else {
-          cout << numbers.size() << endl;
+          for (auto i: numbers)
+            cout << i << endl;
         }
+        break;
       case 'A':
         cout << "Enter an integer to add to the list: ";
         cin >> num;
@@ -104,15 +112,102 @@ do {
         for (auto i = numbers.begin(); i != numbers.end(); i++)
           cout << *i  << ' ' << endl ;
         break;
-      case 'M': cout << "You chose " << choice << endl;
-      case 'm': cout << "You chose " << choice << endl;
-      case 'S': cout << "You chose " << choice << endl;
-      case 's': cout << "You chose " << choice << endl;
-      case 'L': cout << "You chose " << choice << endl;
-      case 'l': cout << "You chose " << choice << endl;
-      case 'Q': cout << "Goodbye!" << endl; break;
-      case 'q': cout << "Goodbye!" << endl; break;
-      default: cout << "Invalid input, please try again" << endl;
+      case 'M':
+        for (auto i = numbers.begin(); i  != numbers.end(); i++)
+            numsum += *i;
+        mean = static_cast<double>(numsum) / numbers.size();
+        cout << "Mean is: " << mean << endl;
+        numsum = 0;
+        break;
+      case 'm':
+        for (auto i = numbers.begin(); i  != numbers.end(); i++)
+            numsum += *i;
+        mean = static_cast<double>(numsum) / numbers.size();
+        cout << "Mean is: " << mean << endl;
+        numsum = 0;
+        break;
+      case 'S':
+        if (numbers.size() == 0){
+          cout << "[] - the list is empty" << endl;
+          break;
+        }
+        else if (numbers.size() == 1) {
+          smallest = numbers.at(0);
+          cout << "Smallest number is: " << smallest << endl;
+          break;
+        } else if (numbers.size() > 1) {
+          for (unsigned i=0; i < numbers.size(); i++){
+            if (numbers.at(i) <= smallest)
+              smallest = numbers.at(i);
+              continue;
+          }
+        }
+          cout << "Smallest number is: " << smallest << endl;
+          break;
+      case 's':
+        if (numbers.size() == 0){
+          cout << "[] - the list is empty" << endl;
+          break;
+        }
+        else if (numbers.size() == 1) {
+          smallest = numbers.at(0);
+          cout << "Smallest number is: " << smallest << endl;
+          break;
+        } else if (numbers.size() > 1) {
+          for (unsigned i=0; i < numbers.size(); i++){
+            if (numbers.at(i) <= smallest)
+              smallest = numbers.at(i);
+              continue;
+          }
+        }
+          cout << "Smallest number is: " << smallest << endl;
+          break;
+      case 'L':
+        if (numbers.size() == 0){
+          cout << "[] - the list is empty" << endl;
+          break;
+        }
+        else if (numbers.size() == 1) {
+          smallest = numbers.at(0);
+          cout << "Largest number is: " << largest << endl;
+          break;
+        } else if (numbers.size() > 1) {
+          for (unsigned i=0; i < numbers.size(); i++){
+            if (numbers.at(i) >= largest)
+              largest = numbers.at(i);
+              continue;
+          }
+        }
+          cout << "Largest number is: " << largest << endl;
+          break;
+      case 'l':
+        if (numbers.size() == 0){
+          cout << "[] - the list is empty" << endl;
+          break;
+        }
+        else if (numbers.size() == 1) {
+          smallest = numbers.at(0);
+          cout << "Largest number is: " << largest << endl;
+          break;
+        } else if (numbers.size() > 1) {
+          for (unsigned i=0; i < numbers.size(); i++){
+            if (numbers.at(i) >= largest)
+              largest = numbers.at(i);
+              continue;
+          }
+        }
+          cout << "Largest number is: " << largest << endl;
+          break;
+      case 'Q':
+        cout << ' ' << endl;
+        cout << "Goodbye!" << endl;
+        break;
+      case 'q':
+        cout << ' ' << endl;
+        cout << "Goodbye!" << endl;
+        break;
+      default:
+        cout << "Invalid input, please try again" << endl;
     }
 
 
