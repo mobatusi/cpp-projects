@@ -30,4 +30,66 @@ For example [1 2 3 4 5]
 if the user enters 'A' or 'a' then you should prompt the user for an integer to add to the list
 which you will add to the list and then display it was added. For eample, if the user enters S
 you should display '5 added'/
-Duplicate list entries are ok 
+Duplicate list entries are ok
+
+*/
+
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int main() {
+
+char choice;
+vector <int> numbers;
+do {
+  cout << "P - Print numbers" << endl;
+  cout << "A - Add a number" << endl;
+  cout << "M - Display mean of the numbers" << endl;
+  cout << "S - Display the smallest number" << endl;
+  cout << "L - Display the largest number" << endl;
+  cout << "Q - Quit" << endl;
+
+  cout << "Enter your choice: ";
+  cin >> choice;
+
+
+    switch (choice) {
+      case 'P':
+        if (numbers.size() == 0) {
+          cout << "[] - the list is empty" << endl;
+          cout << " " <<endl;
+        } else {
+          cout << numbers.size() << endl;
+        }
+      // case 'p':
+        if (numbers.size() == 0) {
+          cout << "[] - the list is empty" << endl;
+          cout << " " <<endl;
+        } else {
+          cout << numbers.size() << endl;
+        }
+      case 'A': cout << "You chose " << choice << endl;
+      case 'a': cout << "You chose " << choice << endl;
+      case 'M': cout << "You chose " << choice << endl;
+      case 'm': cout << "You chose " << choice << endl;
+      case 'S': cout << "You chose " << choice << endl;
+      case 's': cout << "You chose " << choice << endl;
+      case 'L': cout << "You chose " << choice << endl;
+      case 'l': cout << "You chose " << choice << endl;
+      case 'Q': cout << "Goodbye!" << endl; break;
+      case 'q': cout << "Goodbye!" << endl; break;
+      default: cout << "Invalid input, please try again" << endl;
+    }
+
+
+} while(choice != 'Q' && choice != 'q');
+
+
+
+
+
+
+  return 0;
+}
