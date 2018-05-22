@@ -28,7 +28,7 @@ by a space/
 For example [1 2 3 4 5]
 
 if the user enters 'A' or 'a' then you should prompt the user for an integer to add to the list
-which you will add to the list and then display it was added. For eample, if the user enters S
+which you will add to the list and then display it was added. For example, if the user enters 5
 you should display '5 added'/
 Duplicate list entries are ok
 
@@ -43,6 +43,8 @@ int main() {
 
 char choice;
 vector <int> numbers;
+int num;
+
 do {
   cout << "P - Print numbers" << endl;
   cout << "A - Add a number" << endl;
@@ -63,15 +65,22 @@ do {
         } else {
           cout << numbers.size() << endl;
         }
-      // case 'p':
+      case 'p':
         if (numbers.size() == 0) {
           cout << "[] - the list is empty" << endl;
           cout << " " <<endl;
         } else {
           cout << numbers.size() << endl;
         }
-      case 'A': cout << "You chose " << choice << endl;
-      case 'a': cout << "You chose " << choice << endl;
+      case 'A':
+        cout << "Enter an integer to add to the list: ";
+        cin >> num;
+        numbers.push_back(num);
+        cout << num << " added" << endl;
+        for (auto i = numbers.begin(); i != numbers.end(); i++)
+          cout << *i  << ' ' << endl ;
+        break;
+      // case 'a': cout << "You chose " << choice << endl;
       case 'M': cout << "You chose " << choice << endl;
       case 'm': cout << "You chose " << choice << endl;
       case 'S': cout << "You chose " << choice << endl;
