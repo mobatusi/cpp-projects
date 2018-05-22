@@ -75,12 +75,35 @@ do {
       case 'A':
         cout << "Enter an integer to add to the list: ";
         cin >> num;
+        //While the input entered is not an integer, prompt the user to enter an integer.
+        while(!cin)
+        {
+            cout << "That was no integer! Please enter an integer: ";
+            cin.clear();
+            cin.ignore();
+            cin >> num;
+        }
         numbers.push_back(num);
         cout << num << " added" << endl;
         for (auto i = numbers.begin(); i != numbers.end(); i++)
           cout << *i  << ' ' << endl ;
         break;
-      // case 'a': cout << "You chose " << choice << endl;
+      case 'a':
+        cout << "Enter an integer to add to the list: ";
+        cin >> num;
+        //While the input entered is not an integer, prompt the user to enter an integer.
+        while(!cin)
+        {
+            cout << "That was no integer! Please enter an integer: ";
+            cin.clear();
+            cin.ignore();
+            cin >> num;
+        }
+        numbers.push_back(num);
+        cout << num << " added" << endl;
+        for (auto i = numbers.begin(); i != numbers.end(); i++)
+          cout << *i  << ' ' << endl ;
+        break;
       case 'M': cout << "You chose " << choice << endl;
       case 'm': cout << "You chose " << choice << endl;
       case 'S': cout << "You chose " << choice << endl;
