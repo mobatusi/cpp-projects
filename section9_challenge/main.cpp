@@ -50,173 +50,93 @@ int largest(0);
 int numsum(0);
 
 do {
-  cout << "P - Print numbers" << endl;
+  cout << "\nP - Print numbers" << endl;
   cout << "A - Add a number" << endl;
   cout << "M - Display mean of the numbers" << endl;
   cout << "S - Display the smallest number" << endl;
   cout << "L - Display the largest number" << endl;
   cout << "Q - Quit" << endl;
-  cout << ' ' << endl;
-  cout << "Enter your choice: ";
+  cout << "\nEnter your choice: ";
   cin >> choice;
 
-
-    switch (choice) {
-      case 'P':
-        if (numbers.size() == 0) {
-          cout << "[] - the list is empty" << endl;
-          cout << " " <<endl;
-        } else {
-          for (auto i: numbers)
-            cout << i << endl;
-        }
-        break;
-      case 'p':
-        if (numbers.size() == 0) {
-          cout << "[] - the list is empty" << endl;
-          cout << " " <<endl;
-        } else {
-          for (auto i: numbers)
-            cout << i << endl;
-        }
-        break;
-      case 'A':
-        cout << "Enter an integer to add to the list: ";
-        cin >> num;
-        //While the input entered is not an integer, prompt the user to enter an integer.
-        while(!cin)
-        {
-            cout << "That was no integer! Please enter an integer: ";
-            cin.clear();
-            cin.ignore();
-            cin >> num;
-        }
-        numbers.push_back(num);
-        cout << num << " added" << endl;
-        for (auto i = numbers.begin(); i != numbers.end(); i++)
-          cout << *i  << ' ' << endl ;
-        break;
-      case 'a':
-        cout << "Enter an integer to add to the list: ";
-        cin >> num;
-        //While the input entered is not an integer, prompt the user to enter an integer.
-        while(!cin)
-        {
-            cout << "That was no integer! Please enter an integer: ";
-            cin.clear();
-            cin.ignore();
-            cin >> num;
-        }
-        numbers.push_back(num);
-        cout << num << " added" << endl;
-        for (auto i = numbers.begin(); i != numbers.end(); i++)
-          cout << *i  << ' ' << endl ;
-        break;
-      case 'M':
-        for (auto i = numbers.begin(); i  != numbers.end(); i++)
-            numsum += *i;
-        mean = static_cast<double>(numsum) / numbers.size();
-        cout << "Mean is: " << mean << endl;
-        numsum = 0;
-        break;
-      case 'm':
-        for (auto i = numbers.begin(); i  != numbers.end(); i++)
-            numsum += *i;
-        mean = static_cast<double>(numsum) / numbers.size();
-        cout << "Mean is: " << mean << endl;
-        numsum = 0;
-        break;
-      case 'S':
-        if (numbers.size() == 0){
-          cout << "[] - the list is empty" << endl;
-          break;
-        }
-        else if (numbers.size() == 1) {
-          smallest = numbers.at(0);
-          cout << "Smallest number is: " << smallest << endl;
-          break;
-        } else if (numbers.size() > 1) {
-          for (unsigned i=0; i < numbers.size(); i++){
-            if (numbers.at(i) <= smallest)
-              smallest = numbers.at(i);
-              continue;
-          }
-        }
-          cout << "Smallest number is: " << smallest << endl;
-          break;
-      case 's':
-        if (numbers.size() == 0){
-          cout << "[] - the list is empty" << endl;
-          break;
-        }
-        else if (numbers.size() == 1) {
-          smallest = numbers.at(0);
-          cout << "Smallest number is: " << smallest << endl;
-          break;
-        } else if (numbers.size() > 1) {
-          for (unsigned i=0; i < numbers.size(); i++){
-            if (numbers.at(i) <= smallest)
-              smallest = numbers.at(i);
-              continue;
-          }
-        }
-          cout << "Smallest number is: " << smallest << endl;
-          break;
-      case 'L':
-        if (numbers.size() == 0){
-          cout << "[] - the list is empty" << endl;
-          break;
-        }
-        else if (numbers.size() == 1) {
-          smallest = numbers.at(0);
-          cout << "Largest number is: " << largest << endl;
-          break;
-        } else if (numbers.size() > 1) {
-          for (unsigned i=0; i < numbers.size(); i++){
-            if (numbers.at(i) >= largest)
-              largest = numbers.at(i);
-              continue;
-          }
-        }
-          cout << "Largest number is: " << largest << endl;
-          break;
-      case 'l':
-        if (numbers.size() == 0){
-          cout << "[] - the list is empty" << endl;
-          break;
-        }
-        else if (numbers.size() == 1) {
-          smallest = numbers.at(0);
-          cout << "Largest number is: " << largest << endl;
-          break;
-        } else if (numbers.size() > 1) {
-          for (unsigned i=0; i < numbers.size(); i++){
-            if (numbers.at(i) >= largest)
-              largest = numbers.at(i);
-              continue;
-          }
-        }
-          cout << "Largest number is: " << largest << endl;
-          break;
-      case 'Q':
-        cout << ' ' << endl;
-        cout << "Goodbye!" << endl;
-        break;
-      case 'q':
-        cout << ' ' << endl;
-        cout << "Goodbye!" << endl;
-        break;
-      default:
-        cout << "Invalid input, please try again" << endl;
+  if (choice == 'P' || choice == 'p'){
+    if (numbers.size() == 0) {
+      cout << "[] - the list is empty" << endl;
+      cout << " " <<endl;
+    } else {
+      cout << '[';
+      for (auto i: numbers)
+        cout << i << endl;
+      cout << ']';
     }
+  } else if (choice == 'A' || choice == 'a'){
+      cout << "Enter an integer to add to the list: ";
+      cin >> num;
+      //While the input entered is not an integer, prompt the user to enter an integer.
+      while(!cin)
+      {
+          cout << "That was no integer! Please enter an integer: ";
+          cin.clear();
+          cin.ignore();
+          cin >> num;
+      }
+      numbers.push_back(num);
+      cout << num << " added" << endl;
+      for (auto i = numbers.begin(); i != numbers.end(); i++)
+        cout << *i  << ' ' << endl ;
+  } else if (choice == 'M' || choice == 'm'){
+      if (numbers.size() == 0)
+        cout << "Unable to calculate mean - no data" << endl;
+        else{
+          for (auto num:numbers)
+              numsum += num;
+          mean = static_cast<double>(numsum) / numbers.size();
+          cout << "Mean is: " << mean << endl;
+          }
+  }else if (choice == 'S' || choice == 's'){
+      if (numbers.size() == 0){
+        cout << "[] - the list is empty" << endl;
+        break;
+      }
+      else if (numbers.size() == 1) {
+        smallest = numbers.at(0);
+        cout << "Smallest number is: " << smallest << endl;
+        break;
+      } else if (numbers.size() > 1) {
+        for (auto num:numbers){
+          if (num <= smallest)
+            smallest = num;
+            continue;
+        }
+      }
+        cout << "Smallest number is: " << smallest << endl;
+
+  }else if (choice == 'L' || choice == 'l'){
+      if (numbers.size() == 0){
+        cout << "[] - the list is empty" << endl;
+        break;
+      }
+      else if (numbers.size() == 1) {
+        smallest = numbers.at(0);
+        cout << "Largest number is: " << largest << endl;
+        break;
+      } else if (numbers.size() > 1) {
+        for (auto num:numbers){
+          if (num >= largest)
+            largest = num;
+            continue;
+        }
+      }
+        cout << "Largest number is: " << largest << endl;
+  }else if (choice == 'Q' || choice == 'q'){
+      cout << ' ' << endl;
+      cout << "Goodbye!" << endl;
+  }else {
+      cout << "Invalid input, please try again" << endl;
+  }
 
 
 } while(choice != 'Q' && choice != 'q');
-
-
-
-
-
 
   return 0;
 }
