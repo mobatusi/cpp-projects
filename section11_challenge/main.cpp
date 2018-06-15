@@ -105,7 +105,7 @@ void userinput();
 // Global Var
 char choice;
 
-//Function to display menu
+// Function to display menu
 char menu() {   
 //    char choice;
     cout << "\nP - Print numbers" << endl;
@@ -118,27 +118,58 @@ char menu() {
     cin >> choice;
     return choice;
 }
-//Funtion to read selection from user and checks for upper case
+
+// Function prints numbers
+void printnumbers(){
+    
+}
+
+// Function adds numbers
+void add(){
+    
+}
+
+// Function returns mean of numbers
+void mean(){
+    
+}
+
+// Function returns smallest numbers
+void smallest(){
+    
+}
+
+// Function returns largest numbers
+void largest(){
+    
+}
+
+// Funtion to read selection from user and checks for upper case
 void userinput(){
     do{
     choice = menu();
     if (choice == 'P' || choice == 'p'){
         choice = 'P';
+        printnumbers();
     }else if (choice == 'A' || choice == 'a'){
         choice = 'A';
+        add();
     }else if (choice == 'M' || choice == 'm'){
         choice = 'M';
+        mean();
     }else if (choice == 'S' || choice == 's'){
         choice = 'S';
+        smallest();
     }else if (choice == 'L' || choice == 'l'){
         choice = 'L';
+        largest();
     }else if (choice == 'Q' || choice == 'q'){
         choice = 'Q';
     }else {
       cout << "Invalid input, please try again" << endl;
     }
 //    return choice;
-    }while(choice != 'Q' && choice != 'q');
+    }while(choice != 'Q');
 }
 int main(){
     userinput();
