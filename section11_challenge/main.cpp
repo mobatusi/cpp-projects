@@ -99,14 +99,20 @@ Good luck!
 using namespace std;
 
 // Function Prototypes - useful for type checking
+void printnumbers();
+void add();
+void mean();
 char menu();
+void smallest();
+void largest();
 void userinput();
-    
+
 // Global Var
 char choice;
+vector <int> numbers;  
 
 // Function to display menu
-char menu() {   
+char menu(){   
 //    char choice;
     cout << "\nP - Print numbers" << endl;
     cout << "A - Add a number" << endl;
@@ -121,28 +127,93 @@ char menu() {
 
 // Function prints numbers
 void printnumbers(){
-    
+    if (numbers.size() == 0) {
+      cout << "[] - the list is empty" << endl;
+      cout << " " << endl;
+    } else {
+      cout << '[';
+      for (auto i: numbers){
+        cout << i << endl;
+      }
+      cout << ']';
+        
+    }
 }
 
 // Function adds numbers
 void add(){
-    
+    int num;
+    cout << "Enter an integer to add to the list: ";
+      cin >> num;
+      //While the input entered is not an integer, prompt the user to enter an integer.
+      while(!cin)
+      {
+          cout << "That was no integer! Please enter an integer: ";
+          cin.clear();
+          cin.ignore();
+          cin >> num;
+      }
+      numbers.push_back(num);
+      cout << num << " added" << endl;
+      for (auto i = numbers.begin(); i != numbers.end(); i++)
+        cout << *i  << ' ' << endl ;
 }
 
 // Function returns mean of numbers
 void mean(){
-    
-}
+    int numsum{};
+//    int num;
+    double mean;
+    if (numbers.size() == 0){
+        cout << "Unable to calculate mean - no data" << endl;
+    }else{
+    for (auto num:numbers){
+        numsum += num;
+    }
+        mean = static_cast<double>(numsum) / numbers.size();
+        cout << "Mean is: " << mean << endl;
+        }
+              
+    } 
 
 // Function returns smallest numbers
 void smallest(){
-    
+    int smallest{numbers.at(0)};
+    if (numbers.size() == 0){
+        cout << "[] - the list is empty" << endl;
+      }
+    else if (numbers.size() == 1) {
+        smallest = numbers.at(0);
+        cout << "Smallest number is: " << smallest << endl;
+      } 
+    else if (numbers.size() > 1) {
+        for (int num : numbers){
+          if (num <= smallest)
+            smallest = num;
+            continue;
+        }
+      }
+        cout << "Smallest number is: " << smallest << endl;
 }
 
 // Function returns largest numbers
 void largest(){
-    
-}
+    int largest{};
+    if (numbers.size() == 0){
+        cout << "[] - the list is empty" << endl;
+      }
+      else if (numbers.size() == 1) {
+        largest = numbers.at(1);
+        cout << "Largest number is: " << largest << endl;
+      } else if (numbers.size() > 1) {
+        for (auto num:numbers){
+          if (num >= largest)
+            largest = num;
+            continue;
+        }
+      }
+    cout << "Largest number is: " << largest << endl;
+  }
 
 // Funtion to read selection from user and checks for upper case
 void userinput(){
@@ -165,121 +236,18 @@ void userinput(){
         largest();
     }else if (choice == 'Q' || choice == 'q'){
         choice = 'Q';
+        cout << ' ' << endl;
+        cout << "Goodbye!" << endl;
     }else {
       cout << "Invalid input, please try again" << endl;
     }
 //    return choice;
     }while(choice != 'Q');
 }
+
+// Main
 int main(){
     userinput();
 
-//do{
-//    cout << userinput() << endl;
-//    cin >> choice;    
-//} while(choice != 'Q' && choice != 'q');
-
-    
-//char choice;
-//vector <int> numbers;
-//int num;
-//double mean;
-//int smallest(0);
-//int largest(0);
-//int numsum(0);
-//
-//
-//do {
-//  cout << "\nP - Print numbers" << endl;
-//  cout << "A - Add a number" << endl;
-//  cout << "M - Display mean of the numbers" << endl;
-//  cout << "S - Display the smallest number" << endl;
-//  cout << "L - Display the largest number" << endl;
-//  cout << "Q - Quit" << endl;
-//  cout << "\nEnter your choice: ";
-//  cin >> choice;
-//
-//  if (choice == 'P' || choice == 'p'){
-//    if (numbers.size() == 0) {
-//      cout << "[] - the list is empty" << endl;
-//      cout << " " <<endl;
-//    } else {
-//      cout << '[';
-//      for (auto i: numbers)
-//        cout << i << endl;
-//      cout << ']';
-//    }
-//  } else if (choice == 'A' || choice == 'a'){
-//      cout << "Enter an integer to add to the list: ";
-//      cin >> num;
-//      //While the input entered is not an integer, prompt the user to enter an integer.
-//      while(!cin)
-//      {
-//          cout << "That was no integer! Please enter an integer: ";
-//          cin.clear();
-//          cin.ignore();
-//          cin >> num;
-//      }
-//      numbers.push_back(num);
-//      cout << num << " added" << endl;
-//      for (auto i = numbers.begin(); i != numbers.end(); i++)
-//        cout << *i  << ' ' << endl ;
-//  } else if (choice == 'M' || choice == 'm'){
-//      if (numbers.size() == 0)
-//        cout << "Unable to calculate mean - no data" << endl;
-//        else{
-//          for (auto num:numbers)
-//              numsum += num;
-//          mean = static_cast<double>(numsum) / numbers.size();
-//          cout << "Mean is: " << mean << endl;
-//          }
-//  }else if (choice == 'S' || choice == 's'){
-//      if (numbers.size() == 0){
-//        cout << "[] - the list is empty" << endl;
-//        break;
-//      }
-//      else if (numbers.size() == 1) {
-//        smallest = numbers.at(0);
-//        cout << "Smallest number is: " << smallest << endl;
-//        break;
-//      } else if (numbers.size() > 1) {
-//        for (auto num:numbers){
-//          if (num <= smallest)
-//            smallest = num;
-//            continue;
-//        }
-//      }
-//        cout << "Smallest number is: " << smallest << endl;
-//
-//  }else if (choice == 'L' || choice == 'l'){
-//      if (numbers.size() == 0){
-//        cout << "[] - the list is empty" << endl;
-//        break;
-//      }
-//      else if (numbers.size() == 1) {
-//        smallest = numbers.at(0);
-//        cout << "Largest number is: " << largest << endl;
-//        break;
-//      } else if (numbers.size() > 1) {
-//        for (auto num:numbers){
-//          if (num >= largest)
-//            largest = num;
-//            continue;
-//        }
-//      }
-//        cout << "Largest number is: " << largest << endl;
-//  }else if (choice == 'Q' || choice == 'q'){
-//      cout << ' ' << endl;
-//      cout << "Goodbye!" << endl;
-//  }else {
-//      cout << "Invalid input, please try again" << endl;
-//  }
-//
-//
-//} while(choice != 'Q' && choice != 'q');
-
-
-    
-//Function that displays output
   return 0;
 }
